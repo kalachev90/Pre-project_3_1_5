@@ -26,17 +26,17 @@ public class TableInserter implements CommandLineRunner {
         Role user = new Role("ROLE_USER");
         Role admin = new Role("ROLE_ADMIN");
 
-        roleService.addRole(user);
-        roleService.addRole(admin);
+        roleService.saveRole(user);
+        roleService.saveRole(admin);
 
         user1.addRole(user);
         user2.addRole(admin);
         user3.addRole(user);
         user3.addRole(admin);
 
-        userService.addUser(user1);
-        userService.addUser(user2);
-        userService.addUser(user3);
+        userService.saveUser(user1);
+        userService.saveUser(user2);
+        userService.saveUser(user3);
 
     }
 }

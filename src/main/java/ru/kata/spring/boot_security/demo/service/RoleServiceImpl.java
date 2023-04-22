@@ -27,7 +27,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addRole(Role role) {
+    public void saveRole(Role role) {
         roleRepository.save(role);
     }
 }

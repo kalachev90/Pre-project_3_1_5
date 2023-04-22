@@ -5,20 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.service.RoleServiceImpl;
+import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
-import ru.kata.spring.boot_security.demo.service.UserServiceImpl;
 
 import java.security.Principal;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    private final UserServiceImpl userService;
-    private final RoleServiceImpl roleService;
+    private final UserService userService;
+    private final RoleService roleService;
 
     @Autowired
-    public AdminController(UserServiceImpl userService, RoleServiceImpl roleService) {
+    public AdminController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
@@ -32,21 +31,21 @@ public class AdminController {
         return "admin";
     }
 
-    @PostMapping("/add")
-    public String addUser(@ModelAttribute("user") User user){
-        userService.addUser(user);
-        return "redirect:/admin";
-    }
-
-    @GetMapping(value = "/delete/{id}")
-    public String deleteUsers(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
-        return "redirect:/admin";
-    }
-
-    @PostMapping(value = "/edit/{id}")
-    public String editUsers(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        userService.updateUser(user);
-        return "redirect:/admin";
-    }
+//    @PostMapping("/add")
+//    public String addUser(@ModelAttribute("user") User user){
+//        userService.saveUser(user);
+//        return "redirect:/admin";
+//    }
+//
+//    @GetMapping(value = "/delete/{id}")
+//    public String deleteUser(@PathVariable("id") Long id) {
+//        userService.deleteUser(id);
+//        return "redirect:/admin";
+//    }
+//
+//    @PostMapping(value = "/edit/{id}")
+//    public String editUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
+//        userService.updateUser(user);
+//        return "redirect:/admin";
+//    }
 }

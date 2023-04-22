@@ -9,5 +9,5 @@ public interface RoleService {
 
     void deleteRoleById(long id);
 
-    void addRole(Role role);
+    void saveRole(Role role);
 }
